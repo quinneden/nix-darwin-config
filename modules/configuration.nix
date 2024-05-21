@@ -1,5 +1,5 @@
 
-{ pkgs, lib, ... }:
+{ self, pkgs, lib, ... }:
 
 {
   nix = {
