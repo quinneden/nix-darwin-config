@@ -18,7 +18,7 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
   let
     system = "aarch64-darwin";
-    username = "quinn"
+    username = "quinn";
     hostname = "macos-macmini";
     specialArgs =
       inputs
