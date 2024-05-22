@@ -2,7 +2,9 @@
   description = "Darwin system flake.";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    };
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -19,7 +21,7 @@
   let
     system = "aarch64-darwin";
     username = "quinn";
-    hostname = "macos-macmini";
+    hostname = "mothermini";
     specialArgs =
       inputs
       // {
@@ -28,7 +30,7 @@
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#macos-macmini
+    # $ darwin-rebuild build --flake .#mothermini
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       modules = [
        ./modules/configuration.nix

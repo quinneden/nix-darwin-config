@@ -3,7 +3,7 @@
 {
   imports = [
     ./vscodium.nix
-    # ./shell.nix
+    ./shell.nix
   ];
 
   home = {

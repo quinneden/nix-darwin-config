@@ -7,8 +7,6 @@
     description = "quinn";
   };
 
-  programs.zsh.enable = true;
-
   nix = {
     package = pkgs.nix;
     settings = {

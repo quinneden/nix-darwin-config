@@ -15,10 +15,10 @@
     ];
     userSettings = {
       # "update.mode" = "none";
-      # "extensions.autoUpdate" = false; # This stuff fixes vscode freaking out when theres an update
+      "extensions.autoUpdate" = true; # This stuff fixes vscode freaking out when theres an update
       # "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
 
-      # "window.menuBarVisibility" = "toggle";
+      "window.menuBarVisibility" = "toggle";
       "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont', 'monospace', monospace";
       "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont'";
       "editor.fontSize" = 16;
@@ -51,7 +51,7 @@
       "editor.scrollbar.horizontal" = "hidden";
       "workbench.layoutControl.enabled" = true;
 
-      "editor.mouseWheelZoom" = true;
+      "editor.mouseWheelZoom" = false;
 
       "C_Cpp.autocompleteAddParentheses" = true;
       "C_Cpp.formatting" = "vcFormat";
@@ -88,6 +88,15 @@
       {
         key = "ctrl+s";
         command = "workbench.action.files.saveFiles";
+      }
+      {
+        key = "meta+shift+w";
+        command = "workbench.action.terminal.new";
+        when = "terminalProcessSupported || terminalWebExtensionContributedProfile";
+      }
+      {
+        key = "meta+w";
+        command = "";
       }
     ];
   };
