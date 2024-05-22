@@ -63,11 +63,11 @@
     ];
 
     casks = [
-      "utm"
+      # "utm"
       "gdisk"
       # "iterm2"
       "macfuse"
-      "vscodium"
+      # "vscodium"
     ];
   };
 }
