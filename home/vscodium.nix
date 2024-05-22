@@ -22,6 +22,9 @@
       "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont', 'monospace', monospace";
       "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont'";
       "editor.fontSize" = 16;
+      "terminal.integrated.fontSize" = 15;
+      "terminal.integrated.fontWeight" = 300;
+      "terminal.integrated.fontWeightBold" = 500;
       "workbench.colorTheme" = "Dracula";
       # "workbench.iconTheme" = "";
       "vsicons.dontShowNewVersionMessage" = true;

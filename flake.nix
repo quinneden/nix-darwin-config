@@ -15,9 +15,23 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+    };
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, home-manager, ... }:
   let
     system = "aarch64-darwin";
     username = "quinn";
@@ -29,8 +43,6 @@
       };
   in
   {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#mothermini
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       modules = [
         ./configuration.nix
@@ -42,6 +54,21 @@
         home-manager.extraSpecialArgs = specialArgs;
         home-manager.users.${username} = import ./home;
         home-manager.backupFileExtension = "backup";
+      }
+
+      nix-homebrew.darwinModules.nix-homebrew
+      {
+        nix-homebrew = {
+          enable = true;          
+          # autoMigrate = true;
+          enableRosetta = false;
+          user = "${username}";
+          # taps = {
+          #   "homebrew/homebrew-core" = homebrew-core;
+          #   "homebrew/homebrew-cask" = homebrew-cask;
+          # };
+          mutableTaps = true;
+        };
       }
       ];
     };
