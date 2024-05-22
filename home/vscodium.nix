@@ -1,28 +1,22 @@
 { pkgs, ... }: 
 {
   programs.vscode = {
-#     enable = true;
-#     package = pkgs.vscodium;
-#     extensions = with pkgs.vscode-extensions; [
-#       # nix language
-#       bbenoist.nix
-# 
-#       # nix-shell suport 
-#       arrterian.nix-env-selector
-# 
-#       # C/C++
-#       ms-vscode.cpptools
-# 
-#       # OCaml
-#       ocamllabs.ocaml-platform
-# 
-#       # Color theme
-#       dracula-theme.theme-dracula
-#     ];
+    enable = true;
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      # nix language
+      bbenoist.nix
+
+      # nix-shell suport 
+      # arrterian.nix-env-selector
+
+      # Color theme
+      dracula-theme.theme-dracula
+    ];
     userSettings = {
       # "update.mode" = "none";
-      "extensions.autoUpdate" = false; # This stuff fixes vscode freaking out when theres an update
-      "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
+      # "extensions.autoUpdate" = false; # This stuff fixes vscode freaking out when theres an update
+      # "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
 
       # "window.menuBarVisibility" = "toggle";
       "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont', 'monospace', monospace";
@@ -34,7 +28,7 @@
       "explorer.confirmDragAndDrop" = false;
       "editor.fontLigatures" = false;
       "editor.minimap.enabled" = false;
-      "workbench.startupEditor" = "none";
+      # "workbench.startupEditor" = "none";
 
       "editor.formatOnSave" = true;
       "editor.formatOnType" = true;
