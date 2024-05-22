@@ -10,7 +10,7 @@
   nix = {
     package = pkgs.nix;
     settings = {
-      auto-optimise-store = false; # https://github.com/NixOS/nix/issues/7273
+      auto-optimise-store = true; # https://github.com/NixOS/nix/issues/7273
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "@admin" ];
     };
@@ -27,10 +27,5 @@
     hostPlatform = "aarch64-darwin";
   };
 
-  # Set Git commit hash for darwin-version.
-  # system.configurationRevision = self.rev or self.dirtyRev or null;
-
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
   system.stateVersion = 4;
 }

@@ -33,8 +33,7 @@
     # $ darwin-rebuild build --flake .#mothermini
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       modules = [
-       ./modules/configuration.nix
-       ./modules/system.nix
+       ./modules
 
       home-manager.darwinModules.home-manager
       {

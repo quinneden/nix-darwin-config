@@ -4,6 +4,7 @@
   imports = [
     ./vscodium.nix
     ./shell.nix
+    ./starship.nix
   ];
 
   home = {
