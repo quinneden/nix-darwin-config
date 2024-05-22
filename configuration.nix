@@ -2,6 +2,10 @@
 { pkgs, lib, username, ... }:
 
 {
+  imports = [
+    ./modules
+  ];
+
   users.users.quinn = {
     home = "/Users/quinn";
     description = "quinn";
