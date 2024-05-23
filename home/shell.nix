@@ -23,8 +23,7 @@
       "alx.dev" = "curl https://raw.githubusercontent.com/AsahiLinux/asahi-installer/main/scripts/bootstrap-dev.sh | EXPERT=1 sh";
       "alx.sh" = "curl https://alx.sh | sh";
       cdflake = "cd $DARWIN_CONFIG_DIR";
-      code = "/Applications/VSCodium.app/Contents/Resources/app/bin/codium .";
-      codium = "/Applications/VSCodium.app/Contents/Resources/app/bin/codium .";
+      code = "codium";
       colortable = "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/gawin/bash-colors-256/master/colors)";
       darwin-switch = "darwin-rebuild switch --flake $DARWIN_CONFIG_DIR#mothermini";
       fuck = "sudo rm -rf";
@@ -56,24 +55,9 @@
 
     export ZSCRIPTS=''$HOME/.scripts/zsh/scripts
 
-    export HOMEBREW_PREFIX="/opt/homebrew"
-    
-    export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+    eval $(/opt/homebrew/bin/brew shellenv)
 
-    export HOMEBREW_REPOSITORY="/opt/homebrew"
-
-    export MANPATH="/opt/homebrew/share/man''${MANPATH+:''$MANPATH}:"
-
-    export INFOPATH="/opt/homebrew/share/info:''${INFOPATH:-}"
-
-    export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin\
-    :/opt/homebrew/bin\
-    :/opt/homebrew/sbin\
-    :/usr/local/bin\
-    :/Users/quinn/.local/bin\
-    :/run/current-system/sw/bin\
-    :/opt/podman/bin\
-    :''$PATH"
+    export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:/usr/local/bin:/Users/quinn/.local/bin:/run/current-system/sw/bin:/opt/podman/bin:''$PATH"
     
     for f (~/.scripts/zsh/*(N.)) . ''$f
 
@@ -81,3 +65,13 @@
     '';
   };
 }
+
+    # export HOMEBREW_PREFIX="/opt/homebrew"
+    
+    # export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+
+    # export HOMEBREW_REPOSITORY="/opt/homebrew"
+
+    # export MANPATH="/opt/homebrew/share/man''${MANPATH+:''$MANPATH}:"
+
+    # export INFOPATH="/opt/homebrew/share/info:''${INFOPATH:-}"

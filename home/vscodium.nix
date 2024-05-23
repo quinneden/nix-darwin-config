@@ -36,6 +36,8 @@
       "editor.formatOnSave" = true;
       "editor.formatOnType" = true;
       "editor.formatOnPaste" = true;
+      "editor.indentSize" = "tabSize";
+      "editor.tabSize" = 2;
 
       "workbench.layoutControl.type" = "menu";
       "workbench.editor.limit.enabled" = true;

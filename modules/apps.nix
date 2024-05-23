@@ -14,7 +14,10 @@
     # };
 
     taps = [
-      # { name = "koekeishiya/formulae"; }
+      { name = "homebrew/core"; }
+
+      # { name = "homebrew/cask"; }
+
       { name = "homebrew/services"; }
     ];
 
