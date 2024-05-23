@@ -12,7 +12,7 @@
   };
 
   nix = {
-    # package = pkgs.nix;
+    package = pkgs.nix;
     settings = {
       auto-optimise-store = true; # https://github.com/NixOS/nix/issues/7273
       experimental-features = [ "nix-command" "flakes" ];
@@ -26,6 +26,13 @@
 
   services.nix-daemon.enable = true;
   
+  networking.dns = [
+    "1.1.1.1"
+    "1.0.0.1"
+    "2606:4700:4700::1111"
+    "2606:4700:4700::1001"
+  ];
+
   nixpkgs = {
     config.allowUnfree = true;
     hostPlatform = "aarch64-darwin";

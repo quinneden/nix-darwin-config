@@ -2,9 +2,10 @@
 
 {
   nix.linux-builder = {
-    enable = false;
-    systems = [ "aarch64-darwin" "aarch64-linux" ];
-    protocol = "ssh-ng";
+    enable = true;
+    package = pkgs.darwin.linux-builder;
+    systems = [ "aarch64-darwin" "aarch64-linux" "x86_64-linux" ];
+    protocol = "";
     maxJobs = 4;
     # config = ({ pkgs, lib, config, ... }:
     #   {
