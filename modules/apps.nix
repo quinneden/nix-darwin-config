@@ -13,6 +13,11 @@
     #   Xcode = 497799835;
     # };
 
+    taps = [
+      # { name = "koekeishiya/formulae"; }
+      { name = "homebrew/services"; }
+    ];
+
     brews = [
       "aria2"
       "bat"
@@ -60,14 +65,16 @@
       "sevenzip"
       "shellcheck"
       "wget"
+      # "yabai"
     ];
 
     casks = [
-      # "utm"
+      "docker"
       "gdisk"
-      # "iterm2"
+      "iterm2"
       "macfuse"
-      # "vscodium"
+      "utm"
+      "vscodium"
     ];
   };
 }

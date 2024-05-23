@@ -12,11 +12,11 @@
   };
 
   nix = {
-    package = pkgs.nix;
+    # package = pkgs.nix;
     settings = {
       auto-optimise-store = true; # https://github.com/NixOS/nix/issues/7273
       experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "@admin" ];
+      trusted-users = [ "@admin" "root" ];
     };
     gc = {
       automatic = lib.mkDefault true;

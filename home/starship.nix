@@ -4,7 +4,10 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
- 
+    # presets = [          ## No presets option in home manager?
+    #   "pure-preset"
+    #   "nerd-font-symbols"
+    # ];
     settings = {
       directory.substitutions = {
         "~" = "homedir";
