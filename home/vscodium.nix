@@ -32,7 +32,8 @@
       "editor.fontLigatures" = false;
       "editor.minimap.enabled" = false;
       # "workbench.startupEditor" = "none";
-
+      "window.newWindowDimensions" = "inherit";
+      "window.restoreFullscreen" = true;
       "editor.formatOnSave" = true;
       "editor.formatOnType" = true;
       "editor.formatOnPaste" = true;

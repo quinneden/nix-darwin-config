@@ -19,7 +19,7 @@
 
       # customize finder
       finder = {
-        _FXShowPosixPathInTitle = true;  # show full path in finder title
+        _FXShowPosixPathInTitle = false;  # show full path in finder title
         AppleShowAllExtensions = true;  # show all file extensions
         FXEnableExtensionChangeWarning = false;  # disable warning when changing file extension
         QuitMenuItem = true;  # enable quit menu item
@@ -33,7 +33,7 @@
       NSGlobalDomain = {
         # "com.apple.swipescrolldirection" = true;  # enable natural scrolling(default to true)
         # "com.apple.sound.beep.feedback" = 1;  # disable beep sound when pressing volume up/down key
-        # AppleInterfaceStyle = "Dark";  # dark mode
+        AppleInterfaceStyle = "Dark";  # dark mode
         # AppleKeyboardUIMode = 3;  # Mode 3 enables full keyboard control.
         ApplePressAndHoldEnabled = true;  # enable press and hold
 

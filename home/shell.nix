@@ -24,7 +24,6 @@
       "alx.sh" = "curl https://alx.sh | sh";
       cdflake = "cd $DARWIN_CONFIG_DIR";
       code = "codium";
-      colortable = "/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/gawin/bash-colors-256/master/colors)";
       darwin-switch = "darwin-rebuild switch --flake $DARWIN_CONFIG_DIR#mothermini";
       fuck = "sudo rm -rf";
       l = "eza -a --icons --group-directories-first";
@@ -53,11 +52,13 @@
     
     export EDITOR="micro"
 
+    BAT_THEME="Dracula"
+
     export ZSCRIPTS=''$HOME/.scripts/zsh/scripts
 
     eval $(/opt/homebrew/bin/brew shellenv)
 
-    export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:/usr/local/bin:/Users/quinn/.local/bin:/run/current-system/sw/bin:/opt/podman/bin:''$PATH"
+    export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:/usr/local/bin:/Users/quinn/.local/bin:/run/current-system/sw/bin:/opt/podman/bin:/run/current-system/etc/profiles/per-user/quinn/bin:$PATH"
     
     for f (~/.scripts/zsh/*(N.)) . ''$f
 

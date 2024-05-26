@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./builder.nix
+    # ./builder.nix
     ./system.nix
-    ./apps.nix
+    ./brew.nix
     # ./yabai.nix
   ];
 }

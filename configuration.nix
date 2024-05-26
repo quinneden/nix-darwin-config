@@ -25,6 +25,10 @@
   };
 
   services.nix-daemon.enable = true;
+
+  networking.knownNetworkServices = [
+    "Wi-Fi"
+  ];
   
   networking.dns = [
     "1.1.1.1"
