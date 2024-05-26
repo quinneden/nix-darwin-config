@@ -21,6 +21,6 @@
   Host linux-builder
     Hostname localhost
     HostKeyAlias linux-builder
-    Port 2222
+    Port 31022
   '';
 }

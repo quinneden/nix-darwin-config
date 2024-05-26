@@ -8,7 +8,9 @@
       bbenoist.nix
 
       # nix-shell suport 
-      # arrterian.nix-env-selector
+      arrterian.nix-env-selector
+
+      ms-python.python
 
       # Color theme
       dracula-theme.theme-dracula

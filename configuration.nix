@@ -17,6 +17,8 @@
       auto-optimise-store = true; # https://github.com/NixOS/nix/issues/7273
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "@admin" "root" ];
+      builders-use-substitutes = true;
+      builders = "";
     };
     gc = {
       automatic = lib.mkDefault true;
