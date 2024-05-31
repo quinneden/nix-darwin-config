@@ -4,6 +4,9 @@
     enable = true;
     package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
+      # Docker
+      ms-azuretools.vscode-docker
+
       # nix language
       bbenoist.nix
 

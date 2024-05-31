@@ -21,7 +21,7 @@
     shellAliases = {
       "alx.builds" = "curl https://fedora-asahi-remix.org/builds | EXPERT=1 sh";
       "alx.dev" = "curl https://raw.githubusercontent.com/AsahiLinux/asahi-installer/main/scripts/bootstrap-dev.sh | EXPERT=1 sh";
-      "alx.sh" = "curl https://alx.sh | sh";
+      "alx.sh" = "curl https://alx.sh | EXPERT=1 sh";
       cdflake = "cd $DARWIN_CONFIG_DIR";
       code = "codium";
       darwin-switch = "darwin-rebuild switch --flake $DARWIN_CONFIG_DIR#mothermini";

@@ -1,26 +1,37 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }: let
 
-{
-  nix.linux-builder = {
-    enable = false;
-    package = pkgs.darwin.linux-builder;
-    systems = [ "aarch64-linux" ];
-    protocol = "ssh";
-    maxJobs = 2;
-    # config = ({ pkgs, lib, config, ... }:
-    #   {
-    #     users.users.builder = {
-    #       isNormalUser = true;
-    #       home = "/home/quinn";
-    #       password = "cbro";
-    #       extraGroups = [ "wheel" ];
-    #     }; 
-    #   });
+  system = "aarch64-darwin";
+  linuxSystem = builtins.replaceStrings [ "darwin" ] [ "linux" ] system;
+  darwin-builder = inputs.nixpkgs.lib.nixosSystem {
+    system = linuxSystem;
+    modules = [
+      "${inputs.nixpkgs}/nixos/modules/profiles/macos-builder.nix"
+      { virtualisation = {
+          host.pkgs = pkgs;
+          darwin-builder.workingDirectory = "/var/lib/darwin-builder";
+          darwin-builder.hostPort = 22;
+        };
+      }
+    ];
   };
-  environment.etc."ssh/ssh_config.d/100-linux-builder.conf".text = ''
-  Host linux-builder
-    Hostname localhost
-    HostKeyAlias linux-builder
-    Port 31022
-  '';
+in {
+  nix.distributedBuilds = true;
+  nix.buildMachines = [{
+    hostName = "localhost";
+    sshUser = "builder";
+    sshKey = "/etc/nix/builder_ed25519";
+    system = linuxSystem;
+    maxJobs = 4;
+    supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
+  }];
+
+  launchd.daemons.darwin-builder = {
+    command = "${darwin-builder.config.system.build.macos-builder-installer}/bin/create-builder";
+    serviceConfig = {
+      KeepAlive = true;
+      RunAtLoad = true;
+      StandardOutPath = "/var/log/darwin-builder.log";
+      StandardErrorPath = "/var/log/darwin-builder.log";
+    };
+  };
 }

@@ -18,7 +18,6 @@
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "@admin" "root" ];
       builders-use-substitutes = true;
-      builders = "";
     };
     gc = {
       automatic = lib.mkDefault true;

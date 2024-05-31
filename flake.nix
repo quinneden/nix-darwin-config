@@ -36,6 +36,7 @@
     system = "aarch64-darwin";
     username = "quinn";
     hostname = "mothermini";
+    pkgs = nixpkgs.legacyPackages."${system}";
     specialArgs =
       inputs
       // {
@@ -47,25 +48,25 @@
       modules = [
         ./configuration.nix
 
-      home-manager.darwinModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = specialArgs;
-        home-manager.users.${username} = import ./home;
-        home-manager.backupFileExtension = "backup";
-      }
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = specialArgs;
+          home-manager.users.${username} = import ./home;
+          home-manager.backupFileExtension = "backup";
+        }
 
-      nix-homebrew.darwinModules.nix-homebrew
-      {
-        nix-homebrew = {
-          enable = true;          
-          autoMigrate = true;
-          enableRosetta = false;
-          user = "${username}";
-          mutableTaps = true;
-        };
-      }
+        nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew = {
+            enable = true;          
+            autoMigrate = true;
+            enableRosetta = false;
+            user = "${username}";
+            mutableTaps = true;
+          };
+        }
       ];
     };
 

@@ -14,14 +14,16 @@
     # };
 
     taps = [
-      { name = "homebrew/core"; }
+      # { name = "homebrew/core"; }
       { name = "homebrew/services"; }
+      { name = "germag/podman-bootc"; }
     ];
 
     brews = [
       "aria2"
       "bat"
       "bison"
+      "bzip2"
       "cask"
       "chroma"
       "cmake"
@@ -55,6 +57,8 @@
       "perl"
       "pipenv"
       "pipx"
+      # "podman"
+      "podman-bootc"
       "pygments"
       "python@3.10"
       "qemu"
@@ -66,6 +70,13 @@
       "shellcheck"
       "wget"
       # "yabai"
+
+      ## Podman-bootc related
+      # "podman-bootc" # brew tap germag/podman-bootc
+      "xorriso"
+      "libvirt"
+      "golang"
+
     ];
 
     casks = [
@@ -73,7 +84,9 @@
       "gdisk"
       "iterm2"
       "macfuse"
+      "podman-desktop"
       "utm"
+      "vagrant"
       "vscodium"
     ];
   };
