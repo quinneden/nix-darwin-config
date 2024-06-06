@@ -3,7 +3,7 @@
 {
   ## Micro settings/keybinds
   home.file."bindings.json" = {
-    target = ".config/micro/";
+    target = ".config/micro/bindings.json";
     text = ''
     {
       "Alt-d": "command:definition",
@@ -12,17 +12,15 @@
       "Alt-r": "command:references",
       "Alt/": "lua:comment.comment",
       "Ctrl-Alt-z": "Redo",
-      "Ctrl-Meta-z": "Redo",
       "Ctrl-x": "Cut",
       "CtrlSpace": "command:lspcompletion",
-      "CtrlUnderscore": "lua:comment.comment",
-      "Meta-s": "Save"
+      "CtrlUnderscore": "lua:comment.comment"
     }
     '';
   };
 
   home.file."settings.json" = {
-    target = ".config/micro/";
+    target = ".config/micro/settings.json";
     text = ''
     {
       "colorscheme": "dracula-tc",

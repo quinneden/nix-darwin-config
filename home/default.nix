@@ -5,6 +5,7 @@
     ./vscodium.nix
     ./shell.nix
     ./starship.nix
+    ./misc.nix
   ];
 
   home = {

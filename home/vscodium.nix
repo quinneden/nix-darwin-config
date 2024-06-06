@@ -3,6 +3,7 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
+    mutableExtensionsDir = true;
     extensions = with pkgs.vscode-extensions; [
       # Docker
       ms-azuretools.vscode-docker
@@ -16,22 +17,23 @@
       ms-python.python
 
       # Color theme
-      dracula-theme.theme-dracula
+      # dracula-theme.theme-dracula
+      catppuccin.catppuccin-vsc
+      catppuccin.catppuccin-vsc-icons
     ];
     userSettings = {
       # "update.mode" = "none";
       "extensions.autoUpdate" = true; # This stuff fixes vscode freaking out when theres an update
-      # "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
-
+      "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
       "window.menuBarVisibility" = "toggle";
       "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont', 'monospace', monospace";
       "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont'";
       "editor.fontSize" = 16;
-      "terminal.integrated.fontSize" = 15;
+      "terminal.integrated.fontSize" = 14;
       "terminal.integrated.fontWeight" = 300;
       "terminal.integrated.fontWeightBold" = 500;
-      "workbench.colorTheme" = "Dracula";
-      # "workbench.iconTheme" = "";
+      "workbench.colorTheme" = "Catppuccin Mocha";
+      "workbench.iconTheme" = "catppuccin-mocha";
       "vsicons.dontShowNewVersionMessage" = true;
       "explorer.confirmDragAndDrop" = false;
       "editor.fontLigatures" = false;
@@ -47,9 +49,9 @@
 
       "workbench.layoutControl.type" = "menu";
       "workbench.editor.limit.enabled" = true;
-      "workbench.editor.limit.value" = 5;
+      "workbench.editor.limit.value" = 3;
       "workbench.editor.limit.perEditorGroup" = true;
-      "workbench.editor.showTabs" = "single";
+      # "workbench.editor.showTabs" = "single";
       "files.autoSave" = "onWindowChange";
       "explorer.openEditors.visible" = 0;
       "breadcrumbs.enabled" = false;
@@ -58,7 +60,7 @@
       "workbench.statusBar.visible" = true;
       "editor.scrollbar.verticalScrollbarSize" = 2;
       "editor.scrollbar.horizontalScrollbarSize" = 2;
-      # "editor.scrollbar.vertical" = "hidden";
+      "editor.scrollbar.vertical" = "hidden";
       "editor.scrollbar.horizontal" = "hidden";
       "workbench.layoutControl.enabled" = true;
 
