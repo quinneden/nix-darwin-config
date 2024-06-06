@@ -12,7 +12,7 @@
       custom = "/Users/quinn/.oh-my-zsh/custom";
       plugins = [ "zsh-navigation-tools" ];
       extraConfig = ''
-      ZSH="''$HOME/.oh-my-zsh"
+      ZSH="/Users/quinn/.oh-my-zsh"
       zstyle ':omz:update' mode auto
       zstyle ':omz:update' frequency 13
       '';
@@ -40,11 +40,14 @@
       shutdown = "sudo shutdown -h now";
       surf = "sudo rm -rf";
       tree = "eza -aT";
-      zconfig = "micro ~/.config/darwin/home/shell.nix";
+      lsudo = "lima sudo";
     };
 
     initExtra = ''
-    export DARWIN_CONFIG_DIR=''$HOME/.config/darwin
+
+    export DARWIN_CONFIG_DIR=/Users/quinn/.config/darwin
+
+    export GHCR_TOKEN=$(cat $HOME/.ghcr_token)
 
     export LANG=en_US.UTF-8
 
@@ -52,13 +55,17 @@
     
     export EDITOR="micro"
 
-    BAT_THEME="Dracula"
+    export BAT_THEME="Dracula"
 
-    export ZSCRIPTS=''$HOME/.scripts/zsh/scripts
+    export SCR=/Users/quinn/.scripts/zsh/
 
-    eval $(/opt/homebrew/bin/brew shellenv)
+    export PATH="/Library/Frameworks/Python.framework/Versions/Current/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/Users/quinn/.local/bin:/run/current-system/sw/bin:/opt/podman/bin:/run/current-system/etc/profiles/per-user/quinn/bin:$PATH"
 
-    export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:/usr/local/bin:/Users/quinn/.local/bin:/run/current-system/sw/bin:/opt/podman/bin:/run/current-system/etc/profiles/per-user/quinn/bin:$PATH"
+    export HOMEBREW_PREFIX="/opt/homebrew";
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+    export HOMEBREW_REPOSITORY="/opt/homebrew/Library/.homebrew-is-managed-by-nix";
+    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
     
     for f (~/.scripts/zsh/*(N.)) . ''$f
 

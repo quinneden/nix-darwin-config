@@ -16,22 +16,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew = {
-      url = "github:zhaofengli-wip/nix-homebrew";
-    };
-
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
+#     nix-homebrew = {
+#       url = "github:zhaofengli-wip/nix-homebrew";
+#     };
+# 
+#     homebrew-core = {
+#       url = "github:homebrew/homebrew-core";
+#       flake = false;
+#     };
+# 
+#     homebrew-cask = {
+#       url = "github:homebrew/homebrew-cask";
+#       flake = false;
+#     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
   let
     system = "aarch64-darwin";
     username = "quinn";
@@ -55,17 +55,6 @@
           home-manager.extraSpecialArgs = specialArgs;
           home-manager.users.${username} = import ./home;
           home-manager.backupFileExtension = "backup";
-        }
-
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            enable = true;          
-            autoMigrate = true;
-            enableRosetta = false;
-            user = "${username}";
-            mutableTaps = true;
-          };
         }
       ];
     };

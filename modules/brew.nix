@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   homebrew = {
-    enable = true;
+    enable = false;
     onActivation = {
       autoUpdate = false;
       # 'zap': uninstalls all formulae(and related files) not listed here.
@@ -16,9 +16,9 @@
     taps = [
       # { name = "homebrew/core"; }
       { name = "homebrew/services"; }
-      { name = "germag/podman-bootc"; }
+      # { name = "germag/podman-bootc"; }
     ];
-
+    
     brews = [
       "aria2"
       "bat"
@@ -29,6 +29,7 @@
       "cmake"
       "curl"
       "cython"
+      "cmake"
       "eza"
       "fd"
       "flex"
@@ -39,26 +40,32 @@
       "git"
       "go"
       "gobject-introspection"
+      "golang"
       "imagemagick"
       "jq"
       "just"
       "ldid"
       "lftp"
+      "libb2"
       "libimobiledevice"
+      "libvirt"
+      "lima"
       "llvm"
       "lzip"
+      "lzo"
       "m-cli"
       "meson"
       "micro"
       "mingw-w64"
+      "ninja"
       "node"
-      # "openssh"
       "openssl@3"
       "perl"
       "pipenv"
       "pipx"
-      # "podman"
-      "podman-bootc"
+      "pkg-config"
+      "pyenv"
+      "pyenv-virtualenv"
       "pygments"
       "python@3.10"
       "qemu"
@@ -69,13 +76,6 @@
       "sevenzip"
       "shellcheck"
       "wget"
-      # "yabai"
-
-      ## Podman-bootc related
-      # "podman-bootc" # brew tap germag/podman-bootc
-      "xorriso"
-      "libvirt"
-      "golang"
 
     ];
 
