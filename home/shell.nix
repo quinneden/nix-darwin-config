@@ -66,6 +66,8 @@
     export HOMEBREW_REPOSITORY="/opt/homebrew/Library/.homebrew-is-managed-by-nix";
     export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+    . "$HOME/.cargo/env"
     
     for f (~/.scripts/zsh/*(N.)) . ''$f
 

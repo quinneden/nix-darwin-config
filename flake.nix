@@ -16,6 +16,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lix = {
+      url = "git+https://git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
+      flake = false;
+    };
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      inputs.lix.follows = "lix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
 #     nix-homebrew = {
 #       url = "github:zhaofengli-wip/nix-homebrew";
 #     };
@@ -31,7 +41,7 @@
 #     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, lix-module, ... }:
   let
     system = "aarch64-darwin";
     username = "quinn";
@@ -47,7 +57,9 @@
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       modules = [
         ./configuration.nix
-
+        
+        lix-module.nixosModules.default
+        
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
