@@ -6,6 +6,7 @@
     ./shell.nix
     ./starship.nix
     ./misc.nix
+    ./scripts
   ];
 
   home = {

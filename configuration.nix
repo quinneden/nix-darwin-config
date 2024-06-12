@@ -8,13 +8,13 @@
 
   users.users.quinn = {
     home = "/Users/quinn";
-    description = "quinn";
+    # description = "quinn";
   };
 
   nix = {
     package = pkgs.nix;
     settings = {
-      auto-optimise-store = true; # https://github.com/NixOS/nix/issues/7273
+      auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "@admin" "root" ];
       builders-use-substitutes = true;

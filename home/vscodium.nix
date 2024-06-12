@@ -1,21 +1,17 @@
-{ pkgs, ... }: 
-{
+{ pkgs, ... }: {
+
   programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium;
+    # enable = true;
+    # package = pkgs.vscodium;
     mutableExtensionsDir = true;
     extensions = with pkgs.vscode-extensions; [
       # Docker
       ms-azuretools.vscode-docker
-
       # nix language
       bbenoist.nix
-
       # nix-shell suport 
       arrterian.nix-env-selector
-
       ms-python.python
-
       # Color theme
       # dracula-theme.theme-dracula
       catppuccin.catppuccin-vsc
@@ -46,7 +42,6 @@
       "editor.formatOnPaste" = true;
       "editor.indentSize" = "tabSize";
       "editor.tabSize" = 2;
-
       "workbench.layoutControl.type" = "menu";
       "workbench.editor.limit.enabled" = true;
       "workbench.editor.limit.value" = 3;
@@ -63,9 +58,7 @@
       "editor.scrollbar.vertical" = "hidden";
       "editor.scrollbar.horizontal" = "hidden";
       "workbench.layoutControl.enabled" = true;
-
       "editor.mouseWheelZoom" = false;
-
       "C_Cpp.autocompleteAddParentheses" = true;
       "C_Cpp.formatting" = "vcFormat";
       "C_Cpp.vcFormat.newLine.closeBraceSameLine.emptyFunction" = true;
@@ -81,9 +74,7 @@
       "C_Cpp.vcFormat.indent.caseLabels" = true;
       "C_Cpp.intelliSenseCacheSize" = 2048;
       "C_Cpp.intelliSenseMemoryLimit" = 2048;
-      "C_Cpp.default.browse.path" = [
-        ''''${workspaceFolder}/**''
-      ];
+      "C_Cpp.default.browse.path" = [ ''''${workspaceFolder}/**'' ];
       "C_Cpp.default.cStandard" = "gnu11";
       "C_Cpp.inlayHints.parameterNames.hideLeadingUnderscores" = false;
       "C_Cpp.intelliSenseUpdateDelay" = 500;
