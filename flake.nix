@@ -37,8 +37,9 @@
     system = "aarch64-darwin";
     username = "quinn";
     hostname = "qmac";
+    flake = "/Users/quinn/Darwin";
     # pkgs = nixpkgs.legacyPackages."${system}";
-    specialArgs ={ inherit username hostname system inputs; };
+    specialArgs ={ inherit username hostname system flake inputs; };
   in {
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       modules = [

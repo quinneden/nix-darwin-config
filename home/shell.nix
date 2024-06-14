@@ -21,9 +21,9 @@
       "alx.builds" = "curl https://fedora-asahi-remix.org/builds | EXPERT=1 sh";
       "alx.dev" = "curl https://raw.githubusercontent.com/AsahiLinux/asahi-installer/main/scripts/bootstrap-dev.sh | EXPERT=1 sh";
       "alx.sh" = "curl https://alx.sh | EXPERT=1 sh";
-      cdflake = "cd $DARWIN_CONFIG_DIR";
+      cdflake = "cd $DARWIN";
       code = "codium";
-      darwin-switch = "darwin-rebuild switch --flake $DARWIN_CONFIG_DIR#${hostname}";
+      darwin-switch = "darwin-rebuild switch --flake $DARWIN#${hostname}";
       fuck = "sudo rm -rf";
       l = "eza -a --icons --group-directories-first";
       la = "eza -glah";
@@ -44,7 +44,7 @@
 
     initExtra = ''
 
-    export DARWIN_CONFIG_DIR=/Users/quinn/.config/darwin
+    export DARWIN=/Users/quinn/Darwin
 
     export LANG=en_US.UTF-8
 

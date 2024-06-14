@@ -1,6 +1,7 @@
 { 
 inputs,
 nix-darwin-icons,
+flake,
 pkgs,
 ...
 }: {
@@ -8,8 +9,8 @@ pkgs,
     enable = true;
     icons = [
       {
-        path = "/Users/quinn/.config/darwin/";
-        icon = ./icons/flake-dir.icns;
+        path = "${flake}";
+        icon = ./flake-dir.icns;
       }
     ];
   };
