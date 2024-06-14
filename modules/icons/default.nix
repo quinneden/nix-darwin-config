@@ -1,15 +1,15 @@
 { 
 inputs,
 nix-darwin-icons,
-flake,
 pkgs,
+config,
 ...
 }: {
   environment.customIcons = {
     enable = true;
     icons = [
       {
-        path = "${flake}";
+        path = /Users/quinn/Darwin;
         icon = ./flake-dir.icns;
       }
     ];

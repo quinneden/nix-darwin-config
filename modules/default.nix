@@ -4,7 +4,7 @@
   imports = [
     ./system.nix
     ./icons
-    # ./brew.nix
+    ./brew.nix
     # ./builder.nix
   ];
 }

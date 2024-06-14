@@ -42,7 +42,7 @@
       lsudo = "lima sudo";
     };
 
-    initExtra = ''
+    initExtraFirst = ''
 
     export DARWIN=/Users/quinn/Darwin
 

@@ -24,8 +24,22 @@
     darwin-custom-icons = {
       url = "github:ryanccn/nix-darwin-custom-icons";
     };
-  };
 
+    nix-homebrew = {
+      url = "github:zhaofengli-wip/nix-homebrew";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # # Optional: Declarative tap management
+    # homebrew-core = {
+    #   url = "github:homebrew/homebrew-core";
+    #   flake = false;
+    # };
+    # homebrew-cask = {
+    #   url = "github:homebrew/homebrew-cask";
+    #   flake = false;
+    # };
+  };
+  
   outputs = inputs @ {
   self,
   nix-darwin,
@@ -33,22 +47,20 @@
   alejandra,
   home-manager,
   darwin-custom-icons,
+  nix-homebrew,
+  # homebrew-core,
+  # homebrew-cask,
   ... }: let
     system = "aarch64-darwin";
     username = "quinn";
     hostname = "qmac";
-    flake = "/Users/quinn/Darwin";
-    # pkgs = nixpkgs.legacyPackages."${system}";
-    specialArgs ={ inherit username hostname system flake inputs; };
+    pkgs = nixpkgs.legacyPackages."${system}";
+    specialArgs = { inherit username hostname system inputs; };
   in {
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
       modules = [
         ./configuration.nix
-        {
-          environment = {
-            systemPackages = [ alejandra.defaultPackage.aarch64-darwin ];
-          };
-        }
+        nix-homebrew.darwinModules.nix-homebrew
         darwin-custom-icons.darwinModules.default  
         home-manager.darwinModules.home-manager
         {
@@ -60,10 +72,13 @@
             backupFileExtension = "backup";
           };
         }
+        {
+            environment.systemPackages = [ alejandra.defaultPackage.aarch64-darwin ];
+        }
       ];
     };
 
     # Expose the package set, including overlays, for convenience.
-    # darwinPackages = self.darwinConfigurations."${hostname}".pkgs;
+    darwinPackages = self.darwinConfigurations."${hostname}".pkgs;
   };
 }
