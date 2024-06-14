@@ -1,5 +1,4 @@
-
-{ pkgs, ... }: {
+{ pkgs, hostname, ... }: {
 
   programs.zsh = {
     enable = true;
@@ -10,7 +9,7 @@
     oh-my-zsh = {
       enable = true;
       custom = "/Users/quinn/.oh-my-zsh/custom";
-      plugins = [ "zsh-navigation-tools" ];
+      plugins = [ "zsh-navigation-tools nix-zsh-completions" ];
       extraConfig = ''
       ZSH="/Users/quinn/.oh-my-zsh"
       zstyle ':omz:update' mode auto
@@ -24,7 +23,7 @@
       "alx.sh" = "curl https://alx.sh | EXPERT=1 sh";
       cdflake = "cd $DARWIN_CONFIG_DIR";
       code = "codium";
-      darwin-switch = "darwin-rebuild switch --flake $DARWIN_CONFIG_DIR#mothermini";
+      darwin-switch = "darwin-rebuild switch --flake $DARWIN_CONFIG_DIR#${hostname}";
       fuck = "sudo rm -rf";
       l = "eza -a --icons --group-directories-first";
       la = "eza -glah";
@@ -47,8 +46,6 @@
 
     export DARWIN_CONFIG_DIR=/Users/quinn/.config/darwin
 
-    export GHCR_TOKEN=$(cat $HOME/.ghcr_token)
-
     export LANG=en_US.UTF-8
 
     export MICRO_TRUECOLOR=1
@@ -70,18 +67,11 @@
     . "$HOME/.cargo/env"
     
     for f (~/.scripts/zsh/*(N.)) . ''$f
+    for f (~/.scripts/zsh/completions/*(N.)) . ''$f
 
     test -e /Users/quinn/.iterm2_shell_integration.zsh && source /Users/quinn/.iterm2_shell_integration.zsh || true
+
+
     '';
   };
 }
-
-    # export HOMEBREW_PREFIX="/opt/homebrew"
-    
-    # export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
-
-    # export HOMEBREW_REPOSITORY="/opt/homebrew"
-
-    # export MANPATH="/opt/homebrew/share/man''${MANPATH+:''$MANPATH}:"
-
-    # export INFOPATH="/opt/homebrew/share/info:''${INFOPATH:-}"
