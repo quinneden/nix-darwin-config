@@ -3,7 +3,7 @@
 {
   imports = [
     ./system.nix
-    ./icons.nix
+    ./icons
     # ./brew.nix
     # ./builder.nix
   ];

@@ -9,7 +9,7 @@ pkgs,
     icons = [
       {
         path = "/Users/quinn/.config/darwin/";
-        icon = ./icons/;
+        icon = ./icons/flake-dir.icns;
       }
     ];
   };
