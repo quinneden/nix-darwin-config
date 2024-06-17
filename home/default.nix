@@ -1,6 +1,4 @@
-{ username, ... }:
-
-{
+{username, ...}: {
   imports = [
     ./vscodium.nix
     ./shell.nix

@@ -1,9 +1,9 @@
-{ 
-inputs,
-nix-darwin-icons,
-pkgs,
-config,
-...
+{
+  inputs,
+  nix-darwin-icons,
+  pkgs,
+  config,
+  ...
 }: {
   environment.customIcons = {
     enable = true;

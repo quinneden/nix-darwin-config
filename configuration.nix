@@ -1,10 +1,12 @@
-
-{ pkgs, lib, inputs, username, ... }:
-
 {
-  imports = [
-    ./modules
-  ];
+  pkgs,
+  lib,
+  nix-homebrew,
+  inputs,
+  username,
+  ...
+}: {
+  imports = [./modules];
 
   users.users.quinn = {
     home = "/Users/quinn";
@@ -15,11 +17,11 @@
     package = pkgs.nix;
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "@admin" "root" ];
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["@admin" "root"];
       builders-use-substitutes = true;
-      # substituters = [];
-      # trusted-public-keys = [];
+      # substituters = ["https://cache.lix.systems"];
+      # trusted-public-keys = ["cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="];
     };
     gc = {
       automatic = lib.mkDefault true;
@@ -29,10 +31,8 @@
 
   services.nix-daemon.enable = true;
 
-  networking.knownNetworkServices = [
-    "Wi-Fi"
-  ];
-  
+  networking.knownNetworkServices = ["Wi-Fi"];
+
   networking.dns = [
     "1.1.1.1"
     "1.0.0.1"

@@ -27,41 +27,44 @@
 
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
+    };
+
+    lix = {
+      url = "git+https://git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
+      flake = false;
+    };
+
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      inputs.lix.follows = "lix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # # Optional: Declarative tap management
-    # homebrew-core = {
-    #   url = "github:homebrew/homebrew-core";
-    #   flake = false;
-    # };
-    # homebrew-cask = {
-    #   url = "github:homebrew/homebrew-cask";
-    #   flake = false;
-    # };
   };
-  
-  outputs = inputs @ {
-  self,
-  nix-darwin,
-  nixpkgs,
-  alejandra,
-  home-manager,
-  darwin-custom-icons,
-  nix-homebrew,
-  # homebrew-core,
-  # homebrew-cask,
-  ... }: let
+
+  outputs = {
+    self,
+    nix-darwin,
+    nixpkgs,
+    alejandra,
+    home-manager,
+    darwin-custom-icons,
+    nix-homebrew,
+    ...
+  } @ inputs: let
     system = "aarch64-darwin";
     username = "quinn";
     hostname = "qmac";
-    pkgs = nixpkgs.legacyPackages."${system}";
-    specialArgs = { inherit username hostname system inputs; };
+    pkgs = import nixpkgs {
+      config.allowUnfree = true;
+    };
+    specialArgs = {inherit username hostname system inputs;};
   in {
     darwinConfigurations."${hostname}" = nix-darwin.lib.darwinSystem {
+      specialArgs = {inherit inputs username hostname system;};
       modules = [
-        ./configuration.nix
+        (import ./configuration.nix)
         nix-homebrew.darwinModules.nix-homebrew
-        darwin-custom-icons.darwinModules.default  
+        darwin-custom-icons.darwinModules.default
         home-manager.darwinModules.home-manager
         {
           home-manager = {
@@ -73,7 +76,7 @@
           };
         }
         {
-            environment.systemPackages = [ alejandra.defaultPackage.aarch64-darwin ];
+          environment.systemPackages = [alejandra.defaultPackage.aarch64-darwin];
         }
       ];
     };

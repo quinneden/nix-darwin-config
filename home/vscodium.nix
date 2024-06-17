@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   programs.vscode = {
     # enable = true;
     # package = pkgs.vscodium;
@@ -9,7 +8,7 @@
       ms-azuretools.vscode-docker
       # nix language
       bbenoist.nix
-      # nix-shell suport 
+      # nix-shell suport
       arrterian.nix-env-selector
       ms-python.python
       # Color theme
@@ -74,7 +73,7 @@
       "C_Cpp.vcFormat.indent.caseLabels" = true;
       "C_Cpp.intelliSenseCacheSize" = 2048;
       "C_Cpp.intelliSenseMemoryLimit" = 2048;
-      "C_Cpp.default.browse.path" = [ ''''${workspaceFolder}/**'' ];
+      "C_Cpp.default.browse.path" = [''''${workspaceFolder}/**''];
       "C_Cpp.default.cStandard" = "gnu11";
       "C_Cpp.inlayHints.parameterNames.hideLeadingUnderscores" = false;
       "C_Cpp.intelliSenseUpdateDelay" = 500;
