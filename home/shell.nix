@@ -30,6 +30,7 @@
       ls = "eza";
       lsblk = "diskutil list";
       nix-clean = "sudo nix store gc && nix store gc && sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm -rf /nix/var/nix/gcroots/auto/* && nix-collect-garbage && nix-collect-garbage -d";
+      push = "git push";
       py = "python";
       reboot = "sudo reboot";
       rf = "rm -rf";
